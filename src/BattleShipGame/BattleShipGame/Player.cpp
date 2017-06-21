@@ -19,20 +19,7 @@ Player::Player() : nMyKilledShips_(0), nEnemyKilledShip_(0), repeatStep_(false),
 
 void Player::initializeVectorShip()
 {
- //   list<Coordinates> tempMapCoordinates;
-	//default_random_engine generator;
-	//uniform_int_distribution<int> distribution(1, 10);
-	//int shiftX = 5;
-	//int shiftY = 3;
-	//int x = distribution(generator);
-	//int y = distribution(generator);
-	//
-	//auto findItem = std::find(tempMapCoordinates.begin(),
-	//	tempMapCoordinates.end(), new Coordinates(x, y));
-	//if (findItem == tempMapCoordinates.end())
-	//{
-	//	//coord free
-	//}
+ 
 }
 void Player::makeStep(const Coordinates& coordinates)
 {

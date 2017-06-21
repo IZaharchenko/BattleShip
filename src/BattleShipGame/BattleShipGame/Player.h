@@ -6,6 +6,8 @@
 #ifndef _PLAYER_H
 #define _PLAYER_H
 
+using std::vector;
+
 class Player {
 public:
 	//make ref and const
@@ -23,7 +25,7 @@ protected:
 	StepResult& checkStep(const Coordinates& Coordinates);
 	void setStepResult(const StepResult& stepResult);
 private:
-	std::vector<Ship> ships_;
+	vector<Ship> ships_;
 	int nMyKilledShips_;
 	int nEnemyKilledShip_;
 	bool repeatStep_;

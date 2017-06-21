@@ -4,7 +4,9 @@
 #include <vector>
 #include <algorithm>
 
-Ship::Ship(std::vector<Coordinates> body) : body_(body) { };
+using std::vector;
+
+Ship::Ship(vector<Coordinates> body) : body_(body) { };
 
 bool Ship::searchInBody(const Coordinates& coordinates)
 {
@@ -24,3 +26,8 @@ void Ship::drawBody()
 		ConsoleView::print(body_[i], "O");
 	}
 }
+const vector<Coordinates> Ship::getBody()
+{
+	return body_;
+}
+
