@@ -142,6 +142,7 @@
     <ClInclude Include="Boner.h" />
     <ClInclude Include="ConsoleView.h" />
     <ClInclude Include="Coordinates.h" />
+    <ClInclude Include="GenerateFieldOfShip.h" />
     <ClInclude Include="Injure.h" />
     <ClInclude Include="Kill.h" />
     <ClInclude Include="Player.h" />

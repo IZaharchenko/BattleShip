@@ -10,11 +10,11 @@ void Coordinates::setY(const int y)
 	y_ = y;
 }
 
-int Coordinates::getX() {
+int Coordinates::getX() const {
 	return x_;
 }
 
-int Coordinates::getY() {
+int Coordinates::getY() const {
 	return y_;
 }
 

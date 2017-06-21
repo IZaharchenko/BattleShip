@@ -19,6 +19,7 @@ public:
 	void initializeVectorShip();
 	void makeStep(const Coordinates& Coordinates);
 	void drawStep(const Coordinates& Coordinates);
+	void drawField();
 	const bool isLose();
 	void showStatistic();
 protected:

@@ -45,6 +45,9 @@
     <ClInclude Include="Kill.h">
       <Filter>Header Files\derived_StepResult</Filter>
     </ClInclude>
+    <ClInclude Include="GenerateFieldOfShip.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Player.cpp">

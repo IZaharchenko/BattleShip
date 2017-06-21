@@ -10,8 +10,8 @@ public:
 	Coordinates(int x = 0, int y = 0) : x_(x), y_(y) {};
 	void setX(const int x);
 	void setY(const int y);
-	int getX();
-	int getY();
+	int getX() const;
+	int getY() const;
 	bool operator!= (const Coordinates& lhs);
 	bool operator == (const Coordinates& lhs);
 private:
