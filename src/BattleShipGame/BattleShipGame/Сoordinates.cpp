@@ -1,29 +1,29 @@
-#include "Ñoordinates.h"
+#include "Coordinates.h"
 
-void Ñoordinates::setX(const int x)
+void Coordinates::setX(const int x)
 {
 	x_ = x;
 }
 
-void Ñoordinates::setY(const int y) 
+void Coordinates::setY(const int y) 
 {
 	y_ = y;
 }
 
-int Ñoordinates::getX() {
+int Coordinates::getX() {
 	return x_;
 }
 
-int Ñoordinates::getY() {
+int Coordinates::getY() {
 	return y_;
 }
 
-bool Ñoordinates::operator==(const Ñoordinates& lhs)
+bool Coordinates::operator==(const Coordinates& lhs)
 {
 	return (x_ == lhs.x_) && (y_ == lhs.y_);
 
 }
-bool Ñoordinates::operator!=(const Ñoordinates& lhs)
+bool Coordinates::operator!=(const Coordinates& lhs)
 {
 	return (x_ != lhs.x_) && (y_ != lhs.y_);
 

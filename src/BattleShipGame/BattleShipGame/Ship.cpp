@@ -3,12 +3,14 @@
 
 #include <vector>
 #include <algorithm>
-using namespace std;
 
-bool Ship::searchInBody(Ñoordinates coordinates)
+Ship::Ship(std::vector<Coordinates> body) : body_(body) { };
+
+bool Ship::searchInBody(const Coordinates& coordinates)
 {
+	
 	bool result = false;
-	auto findItem = std::find(body_.begin(), body_.end(), coordinates);
+	const auto findItem = std::find(body_.begin(), body_.end(), coordinates);
 	if (findItem != body_.end())
 	{
 		result = true;

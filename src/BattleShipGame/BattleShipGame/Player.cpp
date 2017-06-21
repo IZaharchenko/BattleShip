@@ -4,56 +4,63 @@
 #include <algorithm>
 
 #include "Player.h"
-#include "Ñoordinates.h"
+#include "Coordinates.h"
 #include "StepResult.h"
 
-#include "Ñoordinates.h"
+#include "StepResult.h"
+#include "Boner.h"
+#include "Injure.h"
+#include "Kill.h"
 
-using namespace std;
+#include "ConsoleView.h"
+
+
+Player::Player() : nMyKilledShips_(0), nEnemyKilledShip_(0), repeatStep_(false), stepResult_(0){ }
 
 void Player::initializeVectorShip()
 {
-    list<Ñoordinates> tempMapCoordinates;
-	default_random_engine generator;
-	uniform_int_distribution<int> distribution(1, 10);
-	int shiftX = 5;
-	int shiftY = 3;
-	int x = distribution(generator);
-	int y = distribution(generator);
-	
-	auto findItem = std::find(tempMapCoordinates.begin(),
-		tempMapCoordinates.end(), new Ñoordinates(x, y));
-	if (findItem == tempMapCoordinates.end())
-	{
-		//coord free
-	}
+ //   list<Coordinates> tempMapCoordinates;
+	//default_random_engine generator;
+	//uniform_int_distribution<int> distribution(1, 10);
+	//int shiftX = 5;
+	//int shiftY = 3;
+	//int x = distribution(generator);
+	//int y = distribution(generator);
+	//
+	//auto findItem = std::find(tempMapCoordinates.begin(),
+	//	tempMapCoordinates.end(), new Coordinates(x, y));
+	//if (findItem == tempMapCoordinates.end())
+	//{
+	//	//coord free
+	//}
 }
-void Player::makeStep(const Ñoordinates coord)
+void Player::makeStep(const Coordinates& coordinates)
 {
 
 }
 
-void Player::drawStep(const Ñoordinates coord)
+void Player::drawStep(const Coordinates& coordinates)
 {
-
+	stepResult_->draw(coordinates);
 }
 
-bool Player::canWin()
+const bool Player::isLose()
 {
-	return isWin_;
+	return false;
 }
 
 void Player::showStatistic() 
 {
-
+	//create coord for all data
+ //ConsoleView::print()
 }
 
-StepResult& Player::checkStep(const Ñoordinates coord)
+StepResult& Player::checkStep(const Coordinates& coord)
 {
 	return Boner();
 }
 
 void Player::setStepResult(const StepResult& stepResult)
 {
-	stepResult_ = stepResult;
+	*(stepResult_) = stepResult;
 }

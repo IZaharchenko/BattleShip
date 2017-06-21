@@ -1,18 +1,21 @@
 #include <string>
 #include "ConsoleView.h"
 
-void ConsoleView::setCoordinates(Ñoordinates& coordinates)
+using std::cout;
+
+void ConsoleView::setCoordinates(const Coordinates& coordinates)
 {
-	COORD coord{ coordinates.getX(), coordinates.getY() };
+	Coordinates& c = const_cast<Coordinates&>(coordinates);
+	COORD coord{ c.getX(), c.getY() };
 	SetConsoleCursorPosition(getHandleOut(), coord);
 }
-void ConsoleView::print(Ñoordinates& coordinates, const string state)
+void ConsoleView::print(const Coordinates& coordinates, const string state)
 {
 	setCoordinates(coordinates);
 	cout << state;
 }
-HANDLE& ConsoleView::getHandleOut()
+const HANDLE& ConsoleView::getHandleOut()
 {
-	static HANDLE handleOut = GetStdHandle(STD_OUTPUT_HANDLE);
+	static const HANDLE& handleOut = GetStdHandle(STD_OUTPUT_HANDLE);
 	return handleOut;
 }

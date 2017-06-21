@@ -16,6 +16,9 @@
     <Filter Include="Source Files\derived_StepResult">
       <UniqueIdentifier>{36626ec9-e805-4744-b530-2b3e20c85961}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\derived_StepResult">
+      <UniqueIdentifier>{daea8a94-98d5-4b81-a84d-779ebdde3e3a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="StepResult.h">
@@ -27,11 +30,20 @@
     <ClInclude Include="Player.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Сoordinates.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="ConsoleView.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Coordinates.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Boner.h">
+      <Filter>Header Files\derived_StepResult</Filter>
+    </ClInclude>
+    <ClInclude Include="Injure.h">
+      <Filter>Header Files\derived_StepResult</Filter>
+    </ClInclude>
+    <ClInclude Include="Kill.h">
+      <Filter>Header Files\derived_StepResult</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -54,6 +66,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Ship.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GenerateFieldOfShip.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

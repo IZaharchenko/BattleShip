@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#include "Ñoordinates.h"
+#include "Coordinates.h"
 #include "ConsoleView.h"
 
 #ifndef _STEPRESULT_H
@@ -9,19 +9,8 @@
 class StepResult
 {
 public:
-	virtual void draw(Ñoordinates& coordinates) = 0;
+	virtual void draw(const Coordinates& coordinates) = 0;
+	virtual bool getStepRepeat() = 0;
 };
 
-class Boner : public StepResult
-{
-	virtual void draw(Ñoordinates& coordinates) override;
-};
-class Injure : public StepResult
-{
-	virtual void draw(Ñoordinates& coordinates) override;
-}; 
-class Kill : public StepResult
-{
-	virtual void draw(Ñoordinates& coordinates) override;
-};
 #endif //_STEPRESULT_H

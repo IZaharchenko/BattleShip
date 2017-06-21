@@ -2,20 +2,18 @@
 #include <iostream>
 #include <windows.h>
 
-#include "Ñoordinates.h"
+#include "Coordinates.h"
 
-using namespace std;
+using std::string;
 
 #ifndef __CONSOLEVIEW_H__
 #define __CONSOLEVIEW_H__
 
-class ConsoleView
+namespace ConsoleView
 {
-public:
-	static void print(Ñoordinates& coordinates, const string state);
-private:
-	static void setCoordinates(Ñoordinates& coordinates);
-	static HANDLE& getHandleOut();
+	static void print(const Coordinates& coordinates, const string state);
+	static void setCoordinates(const Coordinates& coordinates);
+	static const HANDLE& getHandleOut();
 };
 
 #endif // __CONSOLEVIEW_H__

@@ -1,6 +1,10 @@
-#include "StepResult.h"
+#include "Boner.h"
 
-void Boner::draw(Ñoordinates& coordinates) 
+void Boner::draw(const Coordinates& coordinates)
 {
 	ConsoleView::print(coordinates, "-");
+}
+bool Boner::getStepRepeat()
+{
+	return true;
 }

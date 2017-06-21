@@ -139,14 +139,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Boner.h" />
     <ClInclude Include="ConsoleView.h" />
-    <ClInclude Include="Сoordinates.h" />
+    <ClInclude Include="Coordinates.h" />
+    <ClInclude Include="Injure.h" />
+    <ClInclude Include="Kill.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Ship.h" />
     <ClInclude Include="StepResult.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ConsoleView.cpp" />
+    <ClCompile Include="GenerateFieldOfShip.cpp" />
     <ClCompile Include="Injure.cpp" />
     <ClCompile Include="Kill.cpp" />
     <ClCompile Include="Player.cpp" />

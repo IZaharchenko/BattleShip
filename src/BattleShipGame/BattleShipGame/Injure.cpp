@@ -1,6 +1,10 @@
-#include "StepResult.h"
+#include "Injure.h"
 
-void Injure::draw(Ñoordinates& coordinates)
+void Injure::draw(const Coordinates& coordinates)
 {
 	ConsoleView::print(coordinates, "+");
+}
+bool Injure::getStepRepeat()
+{
+	return true;
 }

@@ -8,21 +8,26 @@
 
 class Player {
 public:
+	//make ref and const
+	//add constructor
+	//in if - in left - const
+	//connect std::conctereNamespace,not all
+	//instead class ConsoleView - namespace ConsoleView
+	Player();
 	void initializeVectorShip();
-	void makeStep(const Ñoordinates Ñoordinates);
-	void drawStep(const Ñoordinates Ñoordinates);
-	bool canWin();
+	void makeStep(const Coordinates& Coordinates);
+	void drawStep(const Coordinates& Coordinates);
+	const bool isLose();
 	void showStatistic();
 protected:
-	StepResult& checkStep(const Ñoordinates Ñoordinates);
+	StepResult& checkStep(const Coordinates& Coordinates);
 	void setStepResult(const StepResult& stepResult);
 private:
-	bool isWin_;
 	std::vector<Ship> ships_;
 	int nMyKilledShips_;
 	int nEnemyKilledShip_;
 	bool repeatStep_;
-	StepResult& stepResult_;
+	StepResult* stepResult_;
 };
 
 #endif //_PLAYER_H
