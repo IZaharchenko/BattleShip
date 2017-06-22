@@ -11,9 +11,9 @@ using std::string;
 
 namespace ConsoleView
 {
-	static void print(const Coordinates& coordinates, const string state);
-	static void setCoordinates(const Coordinates& coordinates);
-	static const HANDLE& getHandleOut();
+	void print(const Coordinates& coordinates, const string state);
+	void setCoordinates(const Coordinates& coordinates);
+	const HANDLE& getHandleOut();
 };
 
 #endif // __CONSOLEVIEW_H__

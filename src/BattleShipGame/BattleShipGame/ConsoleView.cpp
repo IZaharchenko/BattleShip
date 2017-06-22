@@ -3,10 +3,9 @@
 
 using std::cout;
 
-void ConsoleView::setCoordinates(const Coordinates& coordinates)
+void ConsoleView::setCoordinates(const Coordinates& c)
 {
-	Coordinates& c = const_cast<Coordinates&>(coordinates);
-	COORD coord{ c.getX(), c.getY() };
+	COORD coord{ static_cast<short>(c.getX()), static_cast<short>(c.getY()) };
 	SetConsoleCursorPosition(getHandleOut(), coord);
 }
 void ConsoleView::print(const Coordinates& coordinates, const string state)

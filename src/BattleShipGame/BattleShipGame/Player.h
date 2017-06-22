@@ -6,24 +6,22 @@
 #ifndef _PLAYER_H
 #define _PLAYER_H
 
+using std::vector;
+
 class Player {
 public:
-	//make ref and const
-	//add constructor
-	//in if - in left - const
-	//connect std::conctereNamespace,not all
-	//instead class ConsoleView - namespace ConsoleView
 	Player();
 	void initializeVectorShip();
 	void makeStep(const Coordinates& Coordinates);
-	void drawStep(const Coordinates& Coordinates);
+	void drawStep(const Coordinates& Coordinates) const;
+	void drawField(int shiftX, int shiftY) const;
 	const bool isLose();
 	void showStatistic();
 protected:
 	StepResult& checkStep(const Coordinates& Coordinates);
 	void setStepResult(const StepResult& stepResult);
 private:
-	std::vector<Ship> ships_;
+	vector<Ship> ships_;
 	int nMyKilledShips_;
 	int nEnemyKilledShip_;
 	bool repeatStep_;

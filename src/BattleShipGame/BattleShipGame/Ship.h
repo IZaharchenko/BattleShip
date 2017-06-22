@@ -8,14 +8,17 @@
 #ifndef _SHIP_H
 #define _SHIP_H
 
+using std::vector;
 class Ship
 {
 public:
-	Ship(std::vector<Coordinates> body);
+	Ship();
+	Ship(vector<Coordinates> body);
 	bool searchInBody(const Coordinates& coordinates);
-	void drawBody();
+	void drawBody(int shiftX, int shiftY);
+	const vector<Coordinates> getBody();
 private:
-	std::vector<Coordinates> body_;
+	vector<Coordinates> body_;
 };
 
 #endif //_SHIP_H
