@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Boner.h" />
+    <ClInclude Include="ConsolePrint.h" />
     <ClInclude Include="ConsoleView.h" />
     <ClInclude Include="Coordinates.h" />
     <ClInclude Include="GenerateFieldOfShip.h" />
@@ -150,10 +151,12 @@
     <ClInclude Include="StepResult.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ConsolePrint.cpp" />
     <ClCompile Include="ConsoleView.cpp" />
     <ClCompile Include="GenerateFieldOfShip.cpp" />
     <ClCompile Include="Injure.cpp" />
     <ClCompile Include="Kill.cpp" />
+    <ClCompile Include="Main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Boner.cpp" />
     <ClCompile Include="Ship.cpp" />

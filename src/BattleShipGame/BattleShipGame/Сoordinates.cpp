@@ -1,5 +1,7 @@
 #include "Coordinates.h"
 
+Coordinates::Coordinates(int x, int y) : x_(x), y_(y) {};
+
 void Coordinates::setX(const int x)
 {
 	x_ = x;

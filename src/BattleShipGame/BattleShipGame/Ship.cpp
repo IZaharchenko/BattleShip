@@ -5,12 +5,14 @@
 #include <algorithm>
 
 using std::vector;
+using std::size_t;
+
+Ship::Ship() : Ship(vector<Coordinates>()) { };
 
 Ship::Ship(vector<Coordinates> body) : body_(body) { };
 
 bool Ship::searchInBody(const Coordinates& coordinates)
 {
-	
 	bool result = false;
 	const auto findItem = std::find(body_.begin(), body_.end(), coordinates);
 	if (findItem != body_.end())
@@ -21,7 +23,7 @@ bool Ship::searchInBody(const Coordinates& coordinates)
 }
 void Ship::drawBody()
 {
-	for (int i = 0; i < body_.size(); i++)
+	for (size_t i = 0; i < body_.size(); i++)
 	{
 		ConsoleView::print(body_[i], "O");
 	}

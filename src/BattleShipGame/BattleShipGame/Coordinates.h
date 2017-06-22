@@ -7,7 +7,7 @@
 class Coordinates
 {
 public:
-	Coordinates(int x = 0, int y = 0) : x_(x), y_(y) {};
+	Coordinates(int x, int y);
 	void setX(const int x);
 	void setY(const int y);
 	int getX() const;

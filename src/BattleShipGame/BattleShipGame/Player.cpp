@@ -30,7 +30,7 @@ void Player::makeStep(const Coordinates& coordinates)
 {
 
 }
-void Player::drawField()
+void Player::drawField() const
 {
 	for each ( auto ship in ships_)
 	{
@@ -38,7 +38,7 @@ void Player::drawField()
 	}
 }
 
-void Player::drawStep(const Coordinates& coordinates)
+void Player::drawStep(const Coordinates& coordinates) const
 {
 	stepResult_->draw(coordinates);
 }

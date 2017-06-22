@@ -10,16 +10,11 @@ using std::vector;
 
 class Player {
 public:
-	//make ref and const
-	//add constructor
-	//in if - in left - const
-	//connect std::conctereNamespace,not all
-	//instead class ConsoleView - namespace ConsoleView
 	Player();
 	void initializeVectorShip();
 	void makeStep(const Coordinates& Coordinates);
-	void drawStep(const Coordinates& Coordinates);
-	void drawField();
+	void drawStep(const Coordinates& Coordinates) const;
+	void drawField() const;
 	const bool isLose();
 	void showStatistic();
 protected:

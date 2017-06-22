@@ -12,6 +12,7 @@ using std::vector;
 class Ship
 {
 public:
+	Ship();
 	Ship(vector<Coordinates> body);
 	bool searchInBody(const Coordinates& coordinates);
 	void drawBody();

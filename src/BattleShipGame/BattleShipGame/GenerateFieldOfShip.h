@@ -1,6 +1,7 @@
 #pragma once
 #include <list>
 #include <random>
+#include <ctime>
 #include <map>
 
 #include "Ship.h"
@@ -17,10 +18,13 @@ using std::find;
 using std::default_random_engine;
 using std::uniform_int_distribution;
 
+
+
+
 class GenerateFieldOfShips
 {
 public:
-	GenerateFieldOfShips(const int nShips, map<int, int> nTypeShip);
+	GenerateFieldOfShips(const int nShips, map<int, int>& nTypeShip);
 	vector<Ship> createField();
 private:
 	//map<TypeShipName = {1,2,3,4}, nShip>
@@ -29,12 +33,12 @@ private:
 	list<Ship> ships_;
 	default_random_engine generator_;
 	uniform_int_distribution<int> distribution_;
-
+	
 	Coordinates& getRandCoord();
 	bool checkCoordOnField(const Coordinates& begin);
-	bool isValidCoordinate(Coordinates& begin,
-		int moveX, int moveY, const int typeShipNo);
+	bool isValidCoordinate(const Coordinates& begin,
+		int moveX, int moveY, const int& length);
 	void addShip(const list<Coordinates> body);
-	void addEnvironmentShip(const Coordinates& coordinates, const int length);
+	void addEnvironmentShip(const list<Coordinates>& ship);
 };
 #endif //_G_FIELD_OF_SHIPS_H
