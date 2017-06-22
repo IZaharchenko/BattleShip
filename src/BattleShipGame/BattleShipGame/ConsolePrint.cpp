@@ -4,18 +4,24 @@
 #include "ConsolePrint.h"
 #include "ConsoleView.h"
 
+#include "nShips_sizeField.h"
+#include "ConsoleCoordinates.h"
+
+
 using std::setw;
+using std::cin;
+
 
 void ConsolePrint::printEmptyFields(int col, int row)
 {
-	const char topLeft = static_cast<char>(218);
-	const char topRight = static_cast<char>(191);
+	const char topLeft = static_cast<unsigned char>(218);
+	const char topRight = static_cast<unsigned char>(191);
 
-	const char horizontal = static_cast<char>(196);
-	const char vertical = static_cast<char>(179);
+	const char horizontal = static_cast<unsigned char>(196);
+	const char vertical = static_cast<unsigned char>(179);
 
-	const char bottomLeft = static_cast<char>(192);
-	const char bottomRight = static_cast<char>(217);
+	const char bottomLeft = static_cast<unsigned char>(192);
+	const char bottomRight = static_cast<unsigned char>(217);
 
 	cout << endl;
 	cout << endl;
@@ -113,4 +119,17 @@ void ConsolePrint::printEmptyFields(int col, int row)
 	cout << char(217);
 	cout << endl;
 
+}
+
+int ConsolePrint::getCoordinatesFromUser()
+{
+	while (true)
+	{
+		ConsoleView::setCoordinates(Coordinates(coordinateXInputX, coordinateYInputX));
+		int x = 0;
+		cin >> x;
+		if (x > 0 && x < fieldSize) { return x; }
+		ConsoleView::setCoordinates(Coordinates(coordinateXInputX, coordinateYInputX));
+		cout << "   ";
+	}
 }

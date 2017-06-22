@@ -6,7 +6,6 @@
 
 #include "ConsolePrint.h"
 
-//const
 #include "nShips_sizeField.h"
 #include "ConsoleCoordinates.h"
 
@@ -30,22 +29,30 @@ int main()
 
 	int x = 0;
 	int y = 0;
-	ConsoleView::setCoordinates(Coordinates(coordinateXPrintX, coordinateYPrintX));
-	cout << "X = ";
+	ConsolePrint::setCoordinatesName("X");
+	ConsolePrint::setCoordinatesName("Y");
+
 	while (true)
 	{
-		ConsoleView::setCoordinates(Coordinates(coordinateXInputX, coordinateYInputX));
-		cin >> x;
-		if (x > 0 && x < fieldSize) { break; }
+		x = ConsolePrint::getCoordinatesFromUser(coordinateXInputX, coordinateXInputY);
+		y = ConsolePrint::getCoordinatesFromUser(coordinateYInputX, coordinateYInputY);
+		Coordinates step = Coordinates(x, y);
+		pl2.makeStep(step);
+		pl2.drawStep(step);
+		if (pl2.isLose())
+		{
+
+		}
+		//Generate compiter coordinates
+		x = 2; 
+		y = 5;
+		Coordinates step = Coordinates(x, y);
+		pl1.makeStep(step);
+		pl1.drawStep(step);
+		if (pl1.isLose())
+		{
+
+		}
 	}
-	ConsoleView::setCoordinates(Coordinates(coordinateXPrintY, coordinateYPrintY));
-	cout << "Y = ";
-	while (true)
-	{
-		ConsoleView::setCoordinates(Coordinates(coordinateXInputY, coordinateYInputY));
-		cin >> y;
-		if (x > 0 && x < fieldSize) { break; }
-	}
-	pl2.makeStep(Coordinates(x, y));
 	return 0;
 }

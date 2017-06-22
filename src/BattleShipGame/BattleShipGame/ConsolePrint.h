@@ -13,6 +13,9 @@ using std::endl;
 namespace ConsolePrint
 {
 	void printEmptyFields(int col, int row);
+	int setCoordinatesName(int x, int y);
+	int getCoordinatesFromUser(int x, int y);
+
 };
 
 #endif // __CONSOLEPRINT_H__

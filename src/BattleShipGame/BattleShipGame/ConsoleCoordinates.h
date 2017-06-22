@@ -2,7 +2,7 @@
 #define _CONSOLE_H_
 
 const int shiftInitialX = 3;
-const int shiftInitialY = 2;
+const int shiftInitialY = 3;
 
 const int coordinateXPrintX = 8;
 const int coordinateYPrintX = 15;
