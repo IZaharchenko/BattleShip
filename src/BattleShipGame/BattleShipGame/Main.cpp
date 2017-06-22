@@ -1,4 +1,5 @@
 #include <iostream>
+#include <time.h>
 
 #include "ConsoleView.h"
 #include "Player.h"
@@ -13,10 +14,11 @@ using std::string;
 
 int main()
 {
-	ConsolePrint::printEmptyFields();
+	srand((unsigned)time(0));
+	ConsolePrint::printEmptyFields(3, 2);
 	Player pl1 = Player();
-	//pl1.initializeVectorShip();
-	//pl1.drawField();
+	pl1.initializeVectorShip();
+	pl1.drawField(3, 2);
 
 	int x = 0;
 	int y = 0;

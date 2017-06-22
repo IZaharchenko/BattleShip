@@ -18,9 +18,6 @@ using std::find;
 using std::default_random_engine;
 using std::uniform_int_distribution;
 
-
-
-
 class GenerateFieldOfShips
 {
 public:
@@ -31,8 +28,8 @@ private:
 	map<int, int> nTypeShip_;
 	list<Coordinates> field_;
 	list<Ship> ships_;
-	default_random_engine generator_;
-	uniform_int_distribution<int> distribution_;
+	/*default_random_engine generator_;
+	uniform_int_distribution<int> distribution_;*/
 	
 	Coordinates& getRandCoord();
 	bool checkCoordOnField(const Coordinates& begin);

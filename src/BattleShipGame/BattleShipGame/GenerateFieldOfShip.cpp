@@ -1,20 +1,22 @@
 #include <iostream>
+#include <stdlib.h>
+
 #include "GenerateFieldOfShip.h"
 
 using std::size_t;
+using std::normal_distribution;
 
 GenerateFieldOfShips::GenerateFieldOfShips(const int nShips,
 	map<int, int>& nTypeShip) : nTypeShip_(nTypeShip),
-	ships_(list<Ship>(nShips)),
-	distribution_(uniform_int_distribution<int>(1, nShips)) { };
+	ships_(list<Ship>(nShips)) {}
 
 Coordinates& GenerateFieldOfShips::getRandCoord()
 {
 	Coordinates* c = 0;
 	while (true)
 	{
-		c = &Coordinates(distribution_(generator_),
-			distribution_(generator_));
+		
+		c = &Coordinates(rand() % 10, rand() % 10);
 		if (checkCoordOnField(*c))
 		{
 			break;
@@ -25,11 +27,16 @@ Coordinates& GenerateFieldOfShips::getRandCoord()
 bool GenerateFieldOfShips::checkCoordOnField(const Coordinates& begin)
 {
 	bool isUnique = false;
-	const auto i = find(field_.begin(),
-		field_.end(), begin);
-	if (i == field_.end())
+	bool x = begin.getX() > 0 && begin.getX() < 10;
+	bool y = begin.getY() > 0 && begin.getY() < 10;
+	if (x && y)
 	{
-		isUnique = true;
+		const auto i = find(field_.begin(),
+			field_.end(), begin);
+		if (i == field_.end())
+		{
+			isUnique = true;
+		}
 	}
 	return isUnique;
 }

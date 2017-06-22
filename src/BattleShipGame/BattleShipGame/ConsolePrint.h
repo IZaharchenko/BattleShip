@@ -12,7 +12,7 @@ using std::endl;
 
 namespace ConsolePrint
 {
-	void printEmptyFields();
+	void printEmptyFields(int col, int row);
 };
 
 #endif // __CONSOLEPRINT_H__

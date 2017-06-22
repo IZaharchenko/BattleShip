@@ -21,11 +21,12 @@ bool Ship::searchInBody(const Coordinates& coordinates)
 	}
 	return result;
 }
-void Ship::drawBody()
+void Ship::drawBody(int shifX, int shiftY)
 {
 	for (size_t i = 0; i < body_.size(); i++)
 	{
-		ConsoleView::print(body_[i], "O");
+		ConsoleView::print(Coordinates(body_[i].getX() + shifX, 
+			body_[i].getY() + shiftY), "O");
 	}
 }
 const vector<Coordinates> Ship::getBody()

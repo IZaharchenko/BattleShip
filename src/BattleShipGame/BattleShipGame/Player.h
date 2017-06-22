@@ -14,7 +14,7 @@ public:
 	void initializeVectorShip();
 	void makeStep(const Coordinates& Coordinates);
 	void drawStep(const Coordinates& Coordinates) const;
-	void drawField() const;
+	void drawField(int shiftX, int shiftY) const;
 	const bool isLose();
 	void showStatistic();
 protected:

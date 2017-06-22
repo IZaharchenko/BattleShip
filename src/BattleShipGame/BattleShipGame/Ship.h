@@ -15,7 +15,7 @@ public:
 	Ship();
 	Ship(vector<Coordinates> body);
 	bool searchInBody(const Coordinates& coordinates);
-	void drawBody();
+	void drawBody(int shiftX, int shiftY);
 	const vector<Coordinates> getBody();
 private:
 	vector<Coordinates> body_;

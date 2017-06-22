@@ -6,10 +6,8 @@
 
 using std::setw;
 
-void ConsolePrint::printEmptyFields()
+void ConsolePrint::printEmptyFields(int col, int row)
 {
-	int col = 3;
-	int row = 2;
 	const char topLeft = static_cast<char>(218);
 	const char topRight = static_cast<char>(191);
 

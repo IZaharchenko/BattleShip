@@ -30,11 +30,11 @@ void Player::makeStep(const Coordinates& coordinates)
 {
 
 }
-void Player::drawField() const
+void Player::drawField(int shiftX, int shiftY) const
 {
 	for each ( auto ship in ships_)
 	{
-		ship.drawBody();
+		ship.drawBody(shiftX, shiftY);
 	}
 }
 
