@@ -51,6 +51,12 @@
     <ClInclude Include="ConsolePrint.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="nShips_sizeField.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ConsoleCoordinates.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Player.cpp">

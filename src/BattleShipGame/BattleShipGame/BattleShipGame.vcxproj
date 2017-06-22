@@ -140,12 +140,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Boner.h" />
+    <ClInclude Include="ConsoleCoordinates.h" />
     <ClInclude Include="ConsolePrint.h" />
     <ClInclude Include="ConsoleView.h" />
     <ClInclude Include="Coordinates.h" />
     <ClInclude Include="GenerateFieldOfShip.h" />
     <ClInclude Include="Injure.h" />
     <ClInclude Include="Kill.h" />
+    <ClInclude Include="nShips_sizeField.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Ship.h" />
     <ClInclude Include="StepResult.h" />

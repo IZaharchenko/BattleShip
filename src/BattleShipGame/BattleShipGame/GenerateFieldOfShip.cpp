@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 #include "GenerateFieldOfShip.h"
+#include "nShips_sizeField.h"
 
 using std::size_t;
 using std::normal_distribution;
@@ -15,7 +16,7 @@ Coordinates& GenerateFieldOfShips::getRandCoord()
 	Coordinates* c = 0;
 	while (true)
 	{
-		c = &Coordinates(rand() % 10, rand() % 10);
+		c = &Coordinates(rand() % nShips, rand() % nShips);
 		if (checkCoordOnField(*c))
 		{
 			break;
@@ -26,8 +27,8 @@ Coordinates& GenerateFieldOfShips::getRandCoord()
 bool GenerateFieldOfShips::checkCoordOnField(const Coordinates& begin)
 {
 	bool isUnique = false;
-	bool x = begin.getX() > 1 && begin.getX() < 10;
-	bool y = begin.getY() > 1 && begin.getY() < 10;
+	bool x = begin.getX() > 0 && begin.getX() < nShips;
+	bool y = begin.getY() > 0 && begin.getY() < nShips;
 	if (x && y)
 	{
 		const auto i = find(field_.begin(),
