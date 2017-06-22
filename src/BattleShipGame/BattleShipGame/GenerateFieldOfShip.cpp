@@ -15,7 +15,6 @@ Coordinates& GenerateFieldOfShips::getRandCoord()
 	Coordinates* c = 0;
 	while (true)
 	{
-		
 		c = &Coordinates(rand() % 10, rand() % 10);
 		if (checkCoordOnField(*c))
 		{
@@ -27,8 +26,8 @@ Coordinates& GenerateFieldOfShips::getRandCoord()
 bool GenerateFieldOfShips::checkCoordOnField(const Coordinates& begin)
 {
 	bool isUnique = false;
-	bool x = begin.getX() > 0 && begin.getX() < 10;
-	bool y = begin.getY() > 0 && begin.getY() < 10;
+	bool x = begin.getX() > 1 && begin.getX() < 10;
+	bool y = begin.getY() > 1 && begin.getY() < 10;
 	if (x && y)
 	{
 		const auto i = find(field_.begin(),
@@ -72,14 +71,13 @@ bool GenerateFieldOfShips::isValidCoordinate(const Coordinates& begin,
 			isValid = false;
 			break;
 		}
+	}
 		if (length == body.size())
 		{
 			addShip(body);
 			addEnvironmentShip(body);
 			isValid = true;
-			break;
 		}
-	}
 	return isValid;
 }
 void GenerateFieldOfShips::addEnvironmentShip(const list<Coordinates>& ship)
@@ -113,13 +111,10 @@ vector<Ship> GenerateFieldOfShips::createField()
 	int add = 1;
 	int sub = -1;
 
-	int countTypeShips = nTypeShip_.size();
-	for (int i = 4; i > 0; i--)
+	for (int i = nTypeShip_.size(); i > 0; i--)
 	{
-		int countEachShips = nTypeShip_[i];
-
 		//get count of ship for each ship's type
-		for (int j = 0; j < 1; j++)
+		for (int j = 0; j < nTypeShip_[i]; j++)
 		{
 			while (true)
 			{
@@ -138,7 +133,7 @@ vector<Ship> GenerateFieldOfShips::createField()
 						{
 							//down
 							if (!isValidCoordinate(beginC, beginC.getX(),
-								beginC.getY() - sub, countEachShips))
+								beginC.getY() - sub, i))
 							{
 								continue;
 							}
