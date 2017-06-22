@@ -46,7 +46,7 @@ int main()
 		//Generate compiter coordinates
 		x = 2; 
 		y = 5;
-		Coordinates step = Coordinates(x, y);
+		step = Coordinates(x, y);
 		pl1.makeStep(step);
 		pl1.drawStep(step);
 		if (pl1.isLose())
