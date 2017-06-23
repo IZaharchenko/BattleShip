@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 #include "GenerateFieldOfShip.h"
+
 #include "nShips_sizeField.h"
 
 using std::size_t;
@@ -16,7 +17,7 @@ Coordinates& GenerateFieldOfShips::getRandCoord()
 	Coordinates* c = 0;
 	while (true)
 	{
-		c = &Coordinates(rand() % nShips, rand() % nShips);
+		c = &Coordinates(rand() % nShips + 1, rand() % nShips + 1);
 		if (checkCoordOnField(*c))
 		{
 			break;
@@ -81,6 +82,25 @@ bool GenerateFieldOfShips::isValidCoordinate(const Coordinates& begin,
 		}
 	return isValid;
 }
+void GenerateFieldOfShips::environmentHorizontalShip(const Coordinates& firstC,
+	const Coordinates& lastC, int shiftX, int length)
+{
+	int y = firstC.getY();
+	int xFirst = firstC.getX();
+	int xlast = lastC.getX();
+	for (int i = 0; i < length; i++)
+	{
+		field_.push_back(Coordinates(xFirst + i * shiftX, y - 1));
+		field_.push_back(Coordinates(xFirst + i * shiftX, y + 1));
+	}
+	field_.push_back(Coordinates(xFirst - 1 * shiftX, y - 1));
+	field_.push_back(Coordinates(xFirst - 1 * shiftX, y));
+	field_.push_back(Coordinates(xFirst - 1 * shiftX, y + 1));
+
+	field_.push_back(Coordinates(xlast + 1 * shiftX, y - 1));
+	field_.push_back(Coordinates(xlast + 1 * shiftX, y));
+	field_.push_back(Coordinates(xlast + 1 * shiftX, y + 1));
+}
 void GenerateFieldOfShips::addEnvironmentShip(const list<Coordinates>& ship)
 {
 	for each (auto shipC in ship)
@@ -91,7 +111,8 @@ void GenerateFieldOfShips::addEnvironmentShip(const list<Coordinates>& ship)
 	const Coordinates& lastC = ship.back();
 	if (firstC.getX() < lastC.getX())
 	{
-		int y = firstC.getY();
+		environmentHorizontalShip(firstC, lastC, 1, ship.size());
+		/*int y = firstC.getY();
 		for (size_t i = 0; i < ship.size(); i++)
 		{
 			field_.push_back(Coordinates(firstC.getX() + i, y - 1));
@@ -103,7 +124,26 @@ void GenerateFieldOfShips::addEnvironmentShip(const list<Coordinates>& ship)
 
 		field_.push_back(Coordinates(lastC.getX() + 1, y - 1));
 		field_.push_back(Coordinates(lastC.getX() + 1, y));
-		field_.push_back(Coordinates(lastC.getX() + 1, y + 1));
+		field_.push_back(Coordinates(lastC.getX() + 1, y + 1));*/
+	}
+	if (firstC.getX() > lastC.getX())
+	{
+		environmentHorizontalShip(firstC, lastC, -1, ship.size());
+
+		/*int x = firstC.getX();
+		int y = firstC.getY();
+		for (size_t i = 0; i < ship.size(); i++)
+		{
+			field_.push_back(Coordinates(x - i, y - 1));
+			field_.push_back(Coordinates(x - i, y + 1));
+		}
+		field_.push_back(Coordinates(x + 1, y - 1));
+		field_.push_back(Coordinates(x + 1, y));
+		field_.push_back(Coordinates(x + 1, y + 1));
+
+		field_.push_back(Coordinates(lastC.getX() - 1, y - 1));
+		field_.push_back(Coordinates(lastC.getX() - 1, y));
+		field_.push_back(Coordinates(lastC.getX() - 1, y + 1));*/
 	}
 
 }
