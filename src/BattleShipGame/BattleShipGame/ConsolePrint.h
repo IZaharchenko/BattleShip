@@ -6,6 +6,8 @@
 
 using std::cout;
 using std::endl;
+using std::string;
+
 
 #ifndef __CONSOLEPRINT_H__
 #define __CONSOLEPRINT_H__
@@ -13,7 +15,7 @@ using std::endl;
 namespace ConsolePrint
 {
 	void printEmptyFields(int col, int row);
-	int setCoordinatesName(int x, int y);
+	void setCoordinatesName(string name, const Coordinates & cPrint);
 	int getCoordinatesFromUser(int x, int y);
 
 };

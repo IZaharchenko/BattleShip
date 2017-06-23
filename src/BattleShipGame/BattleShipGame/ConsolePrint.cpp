@@ -1,5 +1,6 @@
 #include <iomanip>
 #include <iostream>
+#include <string>
 
 #include "ConsolePrint.h"
 #include "ConsoleView.h"
@@ -121,15 +122,22 @@ void ConsolePrint::printEmptyFields(int col, int row)
 
 }
 
-int ConsolePrint::getCoordinatesFromUser()
+int ConsolePrint::getCoordinatesFromUser(int x, int y)
 {
 	while (true)
 	{
-		ConsoleView::setCoordinates(Coordinates(coordinateXInputX, coordinateYInputX));
+		ConsoleView::setCoordinates(Coordinates(x, y));
 		int x = 0;
 		cin >> x;
 		if (x > 0 && x < fieldSize) { return x; }
-		ConsoleView::setCoordinates(Coordinates(coordinateXInputX, coordinateYInputX));
+		ConsoleView::setCoordinates(Coordinates(x, y));
 		cout << "   ";
 	}
 }
+
+void ConsolePrint::setCoordinatesName(string name, const Coordinates & cPrint)
+{
+	ConsoleView::setCoordinates(Coordinates(cPrint.getX(), cPrint.getY()));
+	cout << name << " = ";
+}
+
