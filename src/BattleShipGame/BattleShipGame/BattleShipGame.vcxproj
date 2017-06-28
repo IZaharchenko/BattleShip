@@ -140,19 +140,23 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Boner.h" />
+    <ClInclude Include="Computer.h" />
     <ClInclude Include="ConsoleCoordinates.h" />
     <ClInclude Include="ConsolePrint.h" />
     <ClInclude Include="ConsoleView.h" />
     <ClInclude Include="Coordinates.h" />
     <ClInclude Include="GenerateFieldOfShip.h" />
     <ClInclude Include="Injure.h" />
+    <ClInclude Include="KeyCode.h" />
     <ClInclude Include="Kill.h" />
     <ClInclude Include="nShips_sizeField.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Ship.h" />
     <ClInclude Include="StepResult.h" />
+    <ClInclude Include="User.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Computer.cpp" />
     <ClCompile Include="ConsolePrint.cpp" />
     <ClCompile Include="ConsoleView.cpp" />
     <ClCompile Include="GenerateFieldOfShip.cpp" />
@@ -162,6 +166,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Boner.cpp" />
     <ClCompile Include="Ship.cpp" />
+    <ClCompile Include="User.cpp" />
     <ClCompile Include="Сoordinates.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
