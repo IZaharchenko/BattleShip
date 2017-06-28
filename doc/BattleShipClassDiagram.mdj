@@ -1810,7 +1810,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+getCoordinates(return: Coordinates)",
+											"text": "+getCoordinates(): Coordinates",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -2129,7 +2129,7 @@
 											"height": 13,
 											"autoResize": false,
 											"underline": false,
-											"text": "+getCoordinates(return: Coordinates)",
+											"text": "+getCoordinates(): Coordinates",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5,
 											"wordWrap": false
@@ -10534,7 +10534,7 @@
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
-									"direction": "in"
+									"direction": "return"
 								}
 							],
 							"concurrency": "sequential",
@@ -10599,7 +10599,7 @@
 									"isReadOnly": false,
 									"isOrdered": false,
 									"isUnique": false,
-									"direction": "in"
+									"direction": "return"
 								}
 							],
 							"concurrency": "sequential",
