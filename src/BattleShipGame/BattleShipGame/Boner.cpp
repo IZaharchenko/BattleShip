@@ -1,8 +1,8 @@
 #include "Boner.h"
 
-void Boner::draw(const Coordinates& coordinates)
+void Boner::draw(const int x, const int y)
 {
-	ConsoleView::print(coordinates, "-");
+	ConsoleView::print(x, y, "-");
 }
 bool Boner::getStepRepeat()
 {

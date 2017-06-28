@@ -126,18 +126,18 @@ int ConsolePrint::getCoordinatesFromUser(int x, int y)
 {
 	while (true)
 	{
-		ConsoleView::setCoordinates(Coordinates(x, y));
+		ConsoleView::setCoordinates(x, y);
 		int x = 0;
 		cin >> x;
 		if (x > 0 && x < fieldSize) { return x; }
-		ConsoleView::setCoordinates(Coordinates(x, y));
+		ConsoleView::setCoordinates(x, y);
 		cout << "   ";
 	}
 }
 
 void ConsolePrint::setCoordinatesName(string name, const Coordinates & cPrint)
 {
-	ConsoleView::setCoordinates(Coordinates(cPrint.getX(), cPrint.getY()));
+	ConsoleView::setCoordinates(cPrint.getX(), cPrint.getY());
 	cout << name << " = ";
 }
 

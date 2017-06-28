@@ -8,9 +8,9 @@ void ConsoleView::setCoordinates(int x, int y)
 	COORD coord{ static_cast<short>(x), static_cast<short>(y) };
 	SetConsoleCursorPosition(getHandleOut(), coord);
 }
-void ConsoleView::print(const Coordinates& coordinates, const string state)
+void ConsoleView::print(const int x, const int y, const string state)
 {
-	setCoordinates(coordinates.getX(), coordinates.getY());
+	setCoordinates(x, y);
 	cout << state;
 }
 const HANDLE& ConsoleView::getHandleOut()
