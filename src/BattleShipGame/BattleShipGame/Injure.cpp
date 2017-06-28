@@ -1,8 +1,8 @@
 #include "Injure.h"
 
-void Injure::draw(const Coordinates& coordinates)
+void Injure::draw(const int x, const int y)
 {
-	ConsoleView::print(coordinates, "+");
+	ConsoleView::print(x, y, "+");
 }
 bool Injure::getStepRepeat()
 {

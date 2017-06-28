@@ -1,8 +1,8 @@
 #include "Kill.h"
 
-void Kill::draw(const Coordinates& coordinates)
+void Kill::draw(const int x, const int y)
 {
-	ConsoleView::print(coordinates, "X");
+	ConsoleView::print(x, y, "X");
 }
 bool Kill::getStepRepeat()
 {

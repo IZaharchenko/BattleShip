@@ -1,6 +1,5 @@
 #pragma once
 #include <iostream>
-#include "Coordinates.h"
 #include "ConsoleView.h"
 
 #ifndef _STEPRESULT_H
@@ -9,7 +8,7 @@
 class StepResult
 {
 public:
-	virtual void draw(const Coordinates& coordinates) = 0;
+	virtual void draw(const int x, const int y) = 0;
 	virtual bool getStepRepeat() = 0;
 };
 
