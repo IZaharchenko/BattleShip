@@ -43,7 +43,7 @@ void Player::drawField(int shiftX, int shiftY) const
 
 void Player::drawStep(const Coordinates& coordinates) const
 {
-	stepResult_->draw(coordinates);
+	stepResult_->draw(coordinates.getX(), coordinates.getY());
 }
 
 const bool Player::isLose()
