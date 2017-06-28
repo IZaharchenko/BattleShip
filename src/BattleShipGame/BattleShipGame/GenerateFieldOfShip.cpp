@@ -111,7 +111,7 @@ void GenerateFieldOfShips::addEnvironmentShip(const list<Coordinates>& ship)
 	const Coordinates& lastC = ship.back();
 	if (firstC.getX() < lastC.getX())
 	{
-		environmentHorizontalShip(firstC, lastC, 1, ship.size());
+		environmentHorizontalShip(firstC, lastC, 1, (int)ship.size());
 		/*int y = firstC.getY();
 		for (size_t i = 0; i < ship.size(); i++)
 		{
@@ -128,7 +128,7 @@ void GenerateFieldOfShips::addEnvironmentShip(const list<Coordinates>& ship)
 	}
 	if (firstC.getX() > lastC.getX())
 	{
-		environmentHorizontalShip(firstC, lastC, -1, ship.size());
+		environmentHorizontalShip(firstC, lastC, -1, (int)ship.size());
 
 		/*int x = firstC.getX();
 		int y = firstC.getY();
@@ -152,7 +152,7 @@ vector<Ship> GenerateFieldOfShips::createField()
 	int add = 1;
 	int sub = -1;
 
-	for (int i = nTypeShip_.size(); i > 0; i--)
+	for (int i = (int)nTypeShip_.size(); i > 0; i--)
 	{
 		//get count of ship for each ship's type
 		for (int j = 0; j < nTypeShip_[i]; j++)

@@ -15,9 +15,6 @@ using std::vector;
 using std::map;
 using std::find;
 
-using std::default_random_engine;
-using std::uniform_int_distribution;
-
 class GenerateFieldOfShips
 {
 public:
