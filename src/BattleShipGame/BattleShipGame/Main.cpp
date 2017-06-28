@@ -25,17 +25,18 @@ int main()
 	pl1.drawField(shiftInitialX, shiftInitialY);
 
 	Player pl2 = Player();
-	pl1.initializeVectorShip();
+	pl2.initializeVectorShip();
+	pl2.drawField(shiftInitialX + 15, shiftInitialY);
 
 	int x = 0;
 	int y = 0;
-	ConsolePrint::setCoordinatesName("X");
-	ConsolePrint::setCoordinatesName("Y");
+	ConsolePrint::setCoordinatesName("X", Coordinates(coordinateXPrintX, coordinateYPrintX));
+	ConsolePrint::setCoordinatesName("Y", Coordinates(coordinateXPrintY, coordinateYPrintY));
 
 	while (true)
 	{
-		x = ConsolePrint::getCoordinatesFromUser(coordinateXInputX, coordinateXInputY);
-		y = ConsolePrint::getCoordinatesFromUser(coordinateYInputX, coordinateYInputY);
+		x = ConsolePrint::getCoordinatesFromUser(coordinateXInputX, coordinateYInputX);
+		y = ConsolePrint::getCoordinatesFromUser(coordinateXInputY, coordinateYInputY);
 		Coordinates step = Coordinates(x, y);
 		pl2.makeStep(step);
 		pl2.drawStep(step);
@@ -43,7 +44,7 @@ int main()
 		{
 
 		}
-		//Generate compiter coordinates
+		//Generate computer coordinates
 		x = 2; 
 		y = 5;
 		step = Coordinates(x, y);
@@ -53,6 +54,7 @@ int main()
 		{
 
 		}
+		break;
 	}
 	return 0;
 }

@@ -22,6 +22,7 @@ protected:
 	void setStepResult(const StepResult& stepResult);
 private:
 	vector<Ship> ships_;
+
 	int nMyKilledShips_;
 	int nEnemyKilledShip_;
 	bool repeatStep_;

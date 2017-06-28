@@ -15,6 +15,8 @@
 #include "ConsoleView.h"
 #include "GenerateFieldOfShip.h"
 
+#include "nShips_sizeField.h"
+
 using std::map;
 using std::pair;
 
@@ -23,7 +25,7 @@ Player::Player() : nMyKilledShips_(0), nEnemyKilledShip_(0), repeatStep_(false),
 void Player::initializeVectorShip()
 {
 	map<int, int> typesShips = map<int, int>{ { 1, 4 }, {2, 3}, {3, 2}, {4, 1} };
-	GenerateFieldOfShips generate = GenerateFieldOfShips(10, typesShips);
+	GenerateFieldOfShips generate = GenerateFieldOfShips(nShips, typesShips);
 	ships_ = generate.createField();
 }
 void Player::makeStep(const Coordinates& coordinates)
