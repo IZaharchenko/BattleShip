@@ -20,7 +20,8 @@
 using std::map;
 using std::pair;
 
-Player::Player() : nMyKilledShips_(0), nEnemyKilledShip_(0), repeatStep_(false), stepResult_(0){ }
+Player::Player() : nMyKilledShips_(0), nEnemyKilledShip_(0), repeatStep_(false),
+fieldEnemy_{ StateField::EMPTY }, fieldOwn_{ StateField::EMPTY } { }
 
 void Player::initializeVectorShip()
 {
@@ -55,10 +56,12 @@ void Player::showStatistic()
 	//create coord for all data
  //ConsoleView::print()
 }
-
-StepResult& Player::checkStep(const Coordinates& coord)
+bool Player::isOnEnemyField(const Coordinates& coordinates)
 {
-	return Boner();
+	bool hasStep = fieldEnemy_[coordinates.getX()][coordinates.getY()] == StateField::HAS_STEP;
+	bool hasKillShip = fieldEnemy_[coordinates.getX()][coordinates.getY()] == StateField::SHIP_KILL;
+
+	return hasStep && hasKillShip ? true : false;
 }
 
 void Player::setStepResult(const StepResult& stepResult)
