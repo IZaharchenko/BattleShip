@@ -13,4 +13,7 @@ const unsigned int coordinateXPrintY = 8;
 const unsigned int coordinateYPrintY = 16;
 const unsigned int coordinateXInputY = 13;
 const unsigned int coordinateYInputY = 16;
+
+const unsigned int initialX = shiftInitialX;
+const unsigned int initialY = shiftInitialY + 2;
 #endif //_CONSOLE_H_

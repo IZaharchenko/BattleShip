@@ -4,20 +4,20 @@
 #include "GenerateFieldOfShip.h"
 
 #include "nShips_sizeField.h"
+#include "ConsoleCoordinates.h"
 
 using std::size_t;
 using std::normal_distribution;
 
 GenerateFieldOfShips::GenerateFieldOfShips(const int nShips,
-	map<int, int>& nTypeShip) : nTypeShip_(nTypeShip),
-	ships_(list<Ship>(nShips)) {}
+	map<int, int>& nTypeShip) : nTypeShip_(nTypeShip) {}
 
 Coordinates& GenerateFieldOfShips::getRandCoord()
 {
 	Coordinates* c = 0;
 	while (true)
 	{
-		c = &Coordinates(rand() % nShips + 1, rand() % nShips + 1);
+		c = &Coordinates(rand() % nShips, rand() % nShips);
 		if (checkCoordOnField(*c))
 		{
 			break;
@@ -28,8 +28,8 @@ Coordinates& GenerateFieldOfShips::getRandCoord()
 bool GenerateFieldOfShips::checkCoordOnField(const Coordinates& begin)
 {
 	bool isUnique = false;
-	bool x = begin.getX() > 0 && begin.getX() < nShips;
-	bool y = begin.getY() > 0 && begin.getY() < nShips;
+	bool x = (begin.getX() >= 0) && (begin.getX() < nShips);
+	bool y = (begin.getY() >= 0) && (begin.getY() < nShips);
 	if (x && y)
 	{
 		const auto i = find(field_.begin(),
@@ -57,7 +57,7 @@ bool GenerateFieldOfShips::isValidCoordinate(const Coordinates& begin,
 	bool isValid = false;
 	list<Coordinates> body;
 	body.push_back(begin);
-	for (int k = 0; k < length; k++)
+	for (int k = 1; k < length; k++)
 	{
 		Coordinates moveC = Coordinates(x, y);
 		if (checkCoordOnField(moveC))
@@ -83,23 +83,61 @@ bool GenerateFieldOfShips::isValidCoordinate(const Coordinates& begin,
 	return isValid;
 }
 void GenerateFieldOfShips::environmentHorizontalShip(const Coordinates& firstC,
-	const Coordinates& lastC, int shiftX, int length)
+	const Coordinates& lastC, int value, int length)
 {
 	int y = firstC.getY();
-	int xFirst = firstC.getX();
-	int xlast = lastC.getX();
-	for (int i = 0; i < length; i++)
+	for (int i = value; i <= length; i++)
 	{
-		field_.push_back(Coordinates(xFirst + i * shiftX, y - 1));
-		field_.push_back(Coordinates(xFirst + i * shiftX, y + 1));
+		Coordinates& c1 = Coordinates(firstC.getX() + i, y - 1);
+		if (checkCoordOnField(c1))
+		{
+			field_.push_back(c1);
+		}
+		Coordinates& c2 = Coordinates(firstC.getX() + i, y + 1);
+		if (checkCoordOnField(c2))
+		{
+			field_.push_back(c2);
+		}
 	}
-	field_.push_back(Coordinates(xFirst - 1 * shiftX, y - 1));
-	field_.push_back(Coordinates(xFirst - 1 * shiftX, y));
-	field_.push_back(Coordinates(xFirst - 1 * shiftX, y + 1));
+	Coordinates& c1 = Coordinates(firstC.getX() - 1, y);
+	if (checkCoordOnField(c1))
+	{
+		field_.push_back(c1);
+	}
+	Coordinates& c2 = Coordinates(lastC.getX() + 1, y);
+	if (checkCoordOnField(c2))
+	{
+		field_.push_back(c2);
+	}
+}
 
-	field_.push_back(Coordinates(xlast + 1 * shiftX, y - 1));
-	field_.push_back(Coordinates(xlast + 1 * shiftX, y));
-	field_.push_back(Coordinates(xlast + 1 * shiftX, y + 1));
+void GenerateFieldOfShips::environmentVerticalShip(const Coordinates& firstC,
+	const Coordinates& lastC, int value, int length)
+{
+	int x = firstC.getX();
+	for (int i = value; i <= length; i++)
+	{
+		Coordinates& c1 = Coordinates(x - 1, firstC.getY() + i);
+		if (checkCoordOnField(c1))
+		{
+			field_.push_back(c1);
+		}
+		Coordinates& c2 = Coordinates(x + 1, firstC.getY() + i);
+		if (checkCoordOnField(c2))
+		{
+			field_.push_back(c2);
+		}
+	}
+	Coordinates& c1 = Coordinates(x, firstC.getY() - 1);
+	if (checkCoordOnField(c1))
+	{
+		field_.push_back(c1);
+	}
+	Coordinates& c2 = Coordinates(x, lastC.getY() + 1);
+	if (checkCoordOnField(c2))
+	{
+		field_.push_back(c2);
+	}
 }
 void GenerateFieldOfShips::addEnvironmentShip(const list<Coordinates>& ship)
 {
@@ -111,42 +149,58 @@ void GenerateFieldOfShips::addEnvironmentShip(const list<Coordinates>& ship)
 	const Coordinates& lastC = ship.back();
 	if (firstC.getX() < lastC.getX())
 	{
-		environmentHorizontalShip(firstC, lastC, 1, (int)ship.size());
+		environmentHorizontalShip(firstC, lastC, -1, (int)ship.size());
 		/*int y = firstC.getY();
-		for (size_t i = 0; i < ship.size(); i++)
+		for (int i = -1; i <= (int)ship.size(); i++)
 		{
 			field_.push_back(Coordinates(firstC.getX() + i, y - 1));
 			field_.push_back(Coordinates(firstC.getX() + i, y + 1));
 		}
-		field_.push_back(Coordinates(firstC.getX() - 1, y - 1));
 		field_.push_back(Coordinates(firstC.getX() - 1, y));
-		field_.push_back(Coordinates(firstC.getX() - 1, y + 1));
-
-		field_.push_back(Coordinates(lastC.getX() + 1, y - 1));
-		field_.push_back(Coordinates(lastC.getX() + 1, y));
-		field_.push_back(Coordinates(lastC.getX() + 1, y + 1));*/
+		field_.push_back(Coordinates(lastC.getX() + 1, y));*/
 	}
 	if (firstC.getX() > lastC.getX())
 	{
-		environmentHorizontalShip(firstC, lastC, -1, (int)ship.size());
+		environmentHorizontalShip(firstC, lastC, -(int)ship.size(), 1);
 
-		/*int x = firstC.getX();
-		int y = firstC.getY();
-		for (size_t i = 0; i < ship.size(); i++)
+	/*	int y = firstC.getY();
+		for (int i = 1; i >= -(int)ship.size(); i--)
 		{
-			field_.push_back(Coordinates(x - i, y - 1));
-			field_.push_back(Coordinates(x - i, y + 1));
+			field_.push_back(Coordinates(firstC.getX() + i, y - 1));
+			field_.push_back(Coordinates(firstC.getX() + i, y + 1));
 		}
-		field_.push_back(Coordinates(x + 1, y - 1));
-		field_.push_back(Coordinates(x + 1, y));
-		field_.push_back(Coordinates(x + 1, y + 1));
-
-		field_.push_back(Coordinates(lastC.getX() - 1, y - 1));
-		field_.push_back(Coordinates(lastC.getX() - 1, y));
-		field_.push_back(Coordinates(lastC.getX() - 1, y + 1));*/
+		field_.push_back(Coordinates(firstC.getX() + 1, y));
+		field_.push_back(Coordinates(lastC.getX() - ship.size(), y));*/
 	}
 
+	if (firstC.getY() < lastC.getY())
+	{
+		environmentVerticalShip(firstC, lastC, -1, (int)ship.size());
+
+		/*int x = firstC.getX();
+		field_.push_back(Coordinates(x, firstC.getY() - 1));
+		field_.push_back(Coordinates(x, lastC.getY() + 1));
+		for (int i = -1; i <= (int)ship.size(); i++)
+		{
+			field_.push_back(Coordinates(x - 1, firstC.getY() + i));
+			field_.push_back(Coordinates(x + 1, firstC.getY() + i));
+		}*/
+	}
+	if (firstC.getY() > lastC.getY())
+	{
+		environmentVerticalShip(firstC, lastC, -(int)ship.size(), 1);
+
+		/*int x = firstC.getX();
+		field_.push_back(Coordinates(x, firstC.getY() - ship.size()));
+		field_.push_back(Coordinates(x, lastC.getY() + 1));
+		for (int i = 1; i >= -(int)ship.size(); i--)
+		{
+			field_.push_back(Coordinates(x - 1, firstC.getY() + i));
+			field_.push_back(Coordinates(x + 1, firstC.getY() + i));
+		}*/
+	}
 }
+
 vector<Ship> GenerateFieldOfShips::createField()
 {
 	int add = 1;
@@ -185,7 +239,7 @@ vector<Ship> GenerateFieldOfShips::createField()
 			}
 		}
 	}
-	vector<Ship> result = vector<Ship>(ships_.size());
+	vector<Ship> result;
 	for (auto i = ships_.begin(); i != ships_.end(); i++)
 	{
 		result.push_back(*i);

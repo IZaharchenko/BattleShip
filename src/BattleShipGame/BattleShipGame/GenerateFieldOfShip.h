@@ -32,6 +32,8 @@ private:
 	void addShip(const list<Coordinates> body);
 	void addEnvironmentShip(const list<Coordinates>& ship);
 	void environmentHorizontalShip(const Coordinates& firstC, const Coordinates& lastC,
-		int shiftX, int length);
+		int value, int length);
+	void environmentVerticalShip(const Coordinates& firstC, const Coordinates& lastC,
+		int value, int length);
 };
 #endif //_G_FIELD_OF_SHIPS_H
